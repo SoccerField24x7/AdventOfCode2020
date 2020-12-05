@@ -35,5 +35,24 @@ namespace Advent2020.Helpers
 
             return list.Select(v => v != null ? (T)Convert.ChangeType(v, type) : default(T)).ToList();
         }
+
+        public static string GetFileContents(string filePath)
+        {
+            string contents;
+
+            try
+            {
+                using (var sr = new StreamReader(filePath))
+                {
+                    contents = sr.ReadToEnd();
+                }
+            }
+            catch (FileNotFoundException ex)
+            {
+                contents = ex.Message;
+            }
+            
+            return contents;
+        }
     }
 }
