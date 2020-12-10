@@ -5,6 +5,17 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "name": "Day 6",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build - day6",
+            "program": "${workspaceFolder}/Day6/bin/Debug/netcoreapp3.1/Day6.dll",
+            "args": [],
+            "cwd": "${workspaceFolder}/Day6",
+            "console": "internalConsole",
+            "stopAtEntry": false
+        },
+        {
             "name": "Day 5",
             "type": "coreclr",
             "request": "launch",
