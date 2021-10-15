@@ -4,6 +4,17 @@
     // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
     "configurations": [
+    {
+        "name": "Day 10",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build - day10",
+            "program": "${workspaceFolder}/Day10/bin/Debug/net5.0/Day10.dll",
+            "args": [],
+            "cwd": "${workspaceFolder}/Day10",
+            "console": "internalConsole",
+            "stopAtEntry": false
+    },
 		{
             "name": "Day 9",
             "type": "coreclr",
@@ -20,7 +31,7 @@
             "type": "coreclr",
             "request": "launch",
             "preLaunchTask": "build - day8",
-            "program": "${workspaceFolder}/Day8/bin/Debug/netcoreapp3.1/Day8.dll",
+            "program": "${workspaceFolder}/Day8/bin/Debug/net5.0/Day8.dll",
             "args": [],
             "cwd": "${workspaceFolder}/Day8",
             "console": "internalConsole",
