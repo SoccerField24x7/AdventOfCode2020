@@ -65,6 +65,14 @@ namespace Day11
             }
 
             Console.WriteLine(count);
+
+            currentSeating = FileHelper.GetFileContents<string>("./data/sample.txt");
+
+            char result = LookUp(currentSeating, 0, 0);
+            
+            result = LookUp(currentSeating, 7, 9);
+
+            result = LookUp(currentSeating, 1, 9);
         }
 
         public static string PadRowsIfNecessaryAndEvaluate(List<string> rows, bool firstBlock, bool lastBlock)
@@ -89,6 +97,43 @@ namespace Day11
             }
 
             return GetNewSeatAssignmentsForRow(rows);
+        }
+
+        // public static string EvaluateRow(List<string> layout, int row)
+        // {
+
+        // }
+
+        public static char LookUp(List<string> layout, int row, int col)
+        {
+            if (row == 0)
+            {
+                return 'Z';
+            }
+
+            int i = row;
+
+            while (--i >= 0 && layout[i][col] != OPEN && layout[i][col] != OCCUPIED && i >= 0)
+            {
+                continue;
+            }
+
+            if (i == -1)
+            {
+                return 'Z';
+            }
+
+            return layout[row][i];
+        }
+
+        public static char LookDown(List<string> layout, int row, int col)
+        {
+            if (row == layout.Count - 1)
+            {
+                return 'Z';
+            }
+
+            return OPEN;
         }
 
         public static string GetNewSeatAssignmentsForRow(List<string> rows)
