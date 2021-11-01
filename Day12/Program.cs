@@ -1,4 +1,5 @@
 ﻿using System;
+using Advent2020.Constants;
 using Advent2020.Helpers;
 
 namespace Day12
@@ -9,11 +10,6 @@ namespace Day12
         {
             var instructions = FileHelper.GetFileContents<string>("./data/data.txt");
 
-            const int NORTH = 0;
-            const int EAST = 90;
-            const int SOUTH = 180;
-            const int WEST = 270;
-
             const char MOVE_NORTH = 'N';
             const char MOVE_EAST = 'E';
             const char MOVE_SOUTH = 'S';
@@ -22,7 +18,7 @@ namespace Day12
             const char ROTATE_RIGHT = 'R';
             const char ROTATE_LEFT = 'L';
 
-            int currentDirection = EAST;
+            int currentDirection = Direction.EAST;
             int distanceVertically = 0;
             int distanceHorizontally = 0;
 
@@ -30,9 +26,6 @@ namespace Day12
             {
                 char directive = instruction[0];
                 int amount = int.Parse(instruction.Substring(1));
-                Console.WriteLine($"Directive: {directive}, Amount: {amount}");
-
-                continue;
 
                 // brute force it with a switch for now
                 switch(directive)
@@ -50,13 +43,13 @@ namespace Day12
                         distanceHorizontally -= amount;
                         break;
                     case MOVE_FORWARD:
-                        if (currentDirection == EAST)
+                        if (currentDirection == Direction.EAST)
                             distanceHorizontally += amount;
-                        if (currentDirection == WEST)
+                        if (currentDirection == Direction.WEST)
                             distanceHorizontally -= amount;
-                        if (currentDirection == NORTH)
+                        if (currentDirection == Direction.NORTH)
                             distanceVertically += amount;
-                        if (currentDirection == SOUTH)
+                        if (currentDirection == Direction.SOUTH)
                             distanceVertically -= amount;
                         break;
                     case ROTATE_RIGHT:
@@ -69,7 +62,7 @@ namespace Day12
                             currentDirection = (currentDirection + amount) % 360;
                         
                         if (currentDirection + amount == 360)
-                            currentDirection = NORTH;
+                            currentDirection = Direction.NORTH;
 
                         if (currentDirection + amount < 360)
                             currentDirection = currentDirection + amount;
