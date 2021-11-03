@@ -1,4 +1,5 @@
 using System;
+using Advent2020.Constants;
 using Xunit;
 
 namespace Advent2020.Tests
@@ -6,9 +7,12 @@ namespace Advent2020.Tests
     public class Rotation
     {
         [Fact]
-        public void Placeholder()
+        public void Right90DegreesIsEast()
         {
-            Assert.True(false);
+            int shipDirection = Direction.NORTH;
+            shipDirection += 90;
+
+            Assert.Equal(Direction.EAST, shipDirection);
         }
     }
 }
