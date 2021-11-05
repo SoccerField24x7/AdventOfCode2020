@@ -21,6 +21,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Constants\Constants.csproj" />
+    <ProjectReference Include="..\Day12\Day12.csproj" />
   </ItemGroup>
 
 </Project>
