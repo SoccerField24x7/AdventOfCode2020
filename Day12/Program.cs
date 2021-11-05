@@ -1,5 +1,6 @@
 ﻿using System;
 using Advent2020.Constants;
+using Advent2020.Day12;
 using Advent2020.Helpers;
 
 namespace Day12
@@ -53,52 +54,12 @@ namespace Day12
                             distanceVertically -= amount;
                         break;
                     case ROTATE_RIGHT:
-                        if (amount != 360 && amount != 270 && amount != 180 && amount != 90 && amount != 0)
-                        {
-                            throw new Exception("Unknown rotation amount.");
-                        }
-
-                        if (currentDirection + amount > 360)
-                        {
-                            currentDirection = (currentDirection + amount) % 360;
-                        }
-                        else if (currentDirection + amount == 360)
-                        {
-                            currentDirection = Direction.NORTH;
-                        }
-                        else if (currentDirection + amount < 360)
-                        {
-                            currentDirection = currentDirection + amount;
-                        }
-                        else
-                        {
-                            throw new Exception("Invalid 'R' evaluation");
-                        }
-
-                        break;
                     case ROTATE_LEFT:
-                        if (amount != 360 && amount != 270 && amount != 180 && amount != 90 && amount != 0)
-                        {
-                            throw new Exception("Unknown rotation amount.");
-                        }
-
-                        if (currentDirection - amount < 0)
-                        {
-                            currentDirection = 360 - Math.Abs(currentDirection - amount);
-                        }
-                        else if (currentDirection - amount >= 0)
-                        {
-                            currentDirection = currentDirection - amount;
-                        }
-                        else
-                        {
-                            throw new Exception("Invalid 'L' Evaluation");
-                        }
+                        currentDirection = FerryMover.RotateShip(currentDirection, directive, amount);
 
                         break;
                     default:
                         throw new Exception("Undefined directive");
-                        break;
                 }
             }
 
