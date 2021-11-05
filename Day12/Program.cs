@@ -59,13 +59,21 @@ namespace Day12
                         }
 
                         if (currentDirection + amount > 360)
+                        {
                             currentDirection = (currentDirection + amount) % 360;
-                        
-                        if (currentDirection + amount == 360)
+                        }
+                        else if (currentDirection + amount == 360)
+                        {
                             currentDirection = Direction.NORTH;
-
-                        if (currentDirection + amount < 360)
+                        }
+                        else if (currentDirection + amount < 360)
+                        {
                             currentDirection = currentDirection + amount;
+                        }
+                        else
+                        {
+                            throw new Exception("Invalid 'R' evaluation");
+                        }
 
                         break;
                     case ROTATE_LEFT:
@@ -75,10 +83,17 @@ namespace Day12
                         }
 
                         if (currentDirection - amount < 0)
+                        {
                             currentDirection = 360 - Math.Abs(currentDirection - amount);
-                        
-                        if (currentDirection - amount >= 0)
+                        }
+                        else if (currentDirection - amount >= 0)
+                        {
                             currentDirection = currentDirection - amount;
+                        }
+                        else
+                        {
+                            throw new Exception("Invalid 'L' Evaluation");
+                        }
 
                         break;
                     default:
