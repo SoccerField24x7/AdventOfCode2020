@@ -7,6 +7,8 @@ namespace Advent2020.Day12
 {
     public class ManhattanLocation
     {
+        public int VerticalPosition { get; set; }
+        public int HorizontalPosition { get; set; }
 
         public ManhattanLocation()
         {}
@@ -17,7 +19,10 @@ namespace Advent2020.Day12
             VerticalPosition = vPos;
         }
 
-        public int VerticalPosition { get; set; }
-        public int HorizontalPosition { get; set; }
+        public void SetPosition(int hPos, int vPos)
+        {
+            HorizontalPosition = hPos;
+            VerticalPosition = vPos;
+        }
     }
 }

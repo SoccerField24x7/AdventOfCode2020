@@ -64,30 +64,34 @@ namespace Advent2020.Day12
             return currentDirection;
         }
 
-        // public static int MoveDirectionally(ManhattanLocation position, char direction, int amount, int multiplier = 1)
-        // {
-        //     switch (direction)
-        //     {
-        //         case Directive.MOVE_NORTH:
-        //             distanceVertically += amount;
-        //             break;
-        //         case Directive.MOVE_SOUTH:
-        //             distanceVertically -= amount;
-        //             break;
-        //         case Directive.MOVE_EAST:
-        //             distanceHorizontally += amount;
-        //             break;
-        //         case Directive.MOVE_WEST:
-        //             distanceHorizontally -= amount;
-        //             break;
-        //     }
-        // }
-
-        public static ManhattanLocation MoveForward(ManhattanLocation position, int direction, int amount, int multiplier = 1)
+        public static ManhattanLocation MoveDirectionally(ManhattanLocation position, char direction, int amount, int multiplier = 1)
         {
             ManhattanLocation endingPosition = new(position.HorizontalPosition, position.VerticalPosition);
 
             switch (direction)
+            {
+                case Directive.MOVE_NORTH:
+                    endingPosition.VerticalPosition += amount;
+                    break;
+                case Directive.MOVE_SOUTH:
+                    endingPosition.VerticalPosition -= amount;
+                    break;
+                case Directive.MOVE_EAST:
+                    endingPosition.HorizontalPosition += amount;
+                    break;
+                case Directive.MOVE_WEST:
+                    endingPosition.HorizontalPosition -= amount;
+                    break;
+            }
+
+            return endingPosition;
+        }
+
+        public static ManhattanLocation MoveForward(ManhattanLocation position, int directionFacing, int amount, int multiplier = 1)
+        {
+            ManhattanLocation endingPosition = new(position.HorizontalPosition, position.VerticalPosition);
+
+            switch (directionFacing)
             {
                 case Direction.EAST:
                     endingPosition.HorizontalPosition += amount * multiplier;
@@ -102,7 +106,7 @@ namespace Advent2020.Day12
                     endingPosition.VerticalPosition -= amount * multiplier;
                     break;
                 default:
-                    throw new Exception("Invalid move direction.");                            
+                    throw new Exception("Invalid move direction.");
             }
 
             return endingPosition;

@@ -23,16 +23,10 @@ namespace Day12
                 switch(directive)
                 {
                     case Directive.MOVE_NORTH:
-                        position.VerticalPosition += amount;
-                        break;
                     case Directive.MOVE_SOUTH:
-                        position.VerticalPosition -= amount;
-                        break;
                     case Directive.MOVE_EAST:
-                        position.HorizontalPosition += amount;
-                        break;
                     case Directive.MOVE_WEST:
-                        position.HorizontalPosition -= amount;
+                        position = FerryMover.MoveDirectionally(position, directive, amount);
                         break;
 
                     case Directive.MOVE_FORWARD:
