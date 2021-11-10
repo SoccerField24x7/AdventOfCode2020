@@ -96,17 +96,65 @@ namespace Advent2020.Day12
                 case Direction.EAST:
                     endingPosition.HorizontalPosition += amount * multiplier;
                     break;
+
                 case Direction.WEST:
                     endingPosition.HorizontalPosition -= amount * multiplier;
                     break;
+
                 case Direction.NORTH:
                     endingPosition.VerticalPosition += amount * multiplier;
                     break;
+
                 case Direction.SOUTH:
                     endingPosition.VerticalPosition -= amount * multiplier;
                     break;
+
                 default:
                     throw new Exception("Invalid move direction.");
+            }
+
+            return endingPosition;
+        }
+
+        public static ManhattanLocation MoveToWaypoint(ManhattanLocation waypointLocation, ManhattanLocation shipLocation, int multiplier)
+        {
+            ManhattanLocation endingWaypointPosition = new(waypointLocation.HorizontalPosition * multiplier, waypointLocation.VerticalPosition * multiplier);
+            
+            ManhattanLocation endingShipPosition = new(endingWaypointPosition.HorizontalPosition + shipLocation.HorizontalPosition, endingWaypointPosition.VerticalPosition + shipLocation.VerticalPosition);
+
+            return endingShipPosition;
+        }
+
+        public static ManhattanLocation RotateWaypoint( ManhattanLocation waypointLocation, char direction, int amount)
+        {
+            if (amount != 360 && amount != 270 && amount != 180 && amount != 90 && amount != 0)
+            {
+                throw new Exception("Unknown rotation amount.");
+            }
+
+            ManhattanLocation endingPosition = new(waypointLocation.HorizontalPosition, waypointLocation.VerticalPosition);
+
+            switch (amount)
+            {
+                case 90:
+                    endingPosition.VerticalPosition = waypointLocation.HorizontalPosition * -1;
+                    endingPosition.HorizontalPosition = waypointLocation.VerticalPosition;
+                    if (direction == Directive.ROTATE_LEFT)
+                    {
+                        endingPosition.VerticalPosition = endingPosition.VerticalPosition * -1; // undo
+                        endingPosition.HorizontalPosition = endingPosition.HorizontalPosition * -1;
+                    }
+                    break;
+
+                case 180:
+                    break;
+
+                case 270:
+                    break;
+
+                case 360:
+                case 0:
+                    break;
             }
 
             return endingPosition;
