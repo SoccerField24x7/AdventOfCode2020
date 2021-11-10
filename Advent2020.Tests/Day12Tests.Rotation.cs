@@ -68,5 +68,71 @@ namespace Advent2020.Tests
 
             Assert.Equal(Direction.WEST, shipDirection);
         }
+
+        [Fact]
+        public void WaypointRotateRight90From90()
+        {
+            ManhattanLocation waypoint = new(10, 4);
+
+            waypoint = FerryMover.RotateWaypoint(waypoint, Directive.ROTATE_RIGHT, 90);
+
+            Assert.Equal(waypoint.HorizontalPosition, 4);
+            Assert.Equal(waypoint.VerticalPosition, -10);
+        }
+
+        [Fact]
+        public void WaypointRotateLeft90From90()
+        {
+            ManhattanLocation waypoint = new(10, 4);
+
+            waypoint = FerryMover.RotateWaypoint(waypoint, Directive.ROTATE_LEFT, 90);
+
+            Assert.Equal(waypoint.HorizontalPosition, -4);
+            Assert.Equal(waypoint.VerticalPosition, 10);
+        }
+
+        [Fact]
+        public void WaypointRotateRight180From90()
+        {
+            ManhattanLocation waypoint = new(10, 4);
+
+            waypoint = FerryMover.RotateWaypoint(waypoint, Directive.ROTATE_RIGHT, 180);
+
+            Assert.Equal(waypoint.HorizontalPosition, -4);
+            Assert.Equal(waypoint.VerticalPosition, -10);
+        }
+
+        [Fact]
+        public void WaypointRotateLeft180From90()
+        {
+            ManhattanLocation waypoint = new(10, 4);
+
+            waypoint = FerryMover.RotateWaypoint(waypoint, Directive.ROTATE_RIGHT, 180);
+
+            Assert.Equal(waypoint.HorizontalPosition, -4);
+            Assert.Equal(waypoint.VerticalPosition, -10);
+        }
+
+        [Fact]
+        public void WaypointRotateRight270From90()
+        {
+            ManhattanLocation waypoint = new(10, 4);
+
+            waypoint = FerryMover.RotateWaypoint(waypoint, Directive.ROTATE_RIGHT, 270);
+
+            Assert.Equal(waypoint.HorizontalPosition, -4);
+            Assert.Equal(waypoint.VerticalPosition, 10);
+        }
+
+        [Fact]
+        public void WaypointRotateLeft270From90()
+        {
+            ManhattanLocation waypoint = new(10, 4);
+
+            waypoint = FerryMover.RotateWaypoint(waypoint, Directive.ROTATE_LEFT, 270);
+
+            Assert.Equal(waypoint.HorizontalPosition, 4);
+            Assert.Equal(waypoint.VerticalPosition, -10);
+        }
     }
 }
