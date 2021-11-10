@@ -30,29 +30,15 @@ namespace Advent2020.Tests
             Assert.Equal(170, ship.HorizontalPosition);
             Assert.Equal(38, ship.VerticalPosition);
 
-
-        }
-
-        [Fact]
-        public void WaypointRotateRightFrom90()
-        {
-            ManhattanLocation waypoint = new(10, 4);
-
             waypoint = FerryMover.RotateWaypoint(waypoint, Directive.ROTATE_RIGHT, 90);
+            
+            Assert.Equal(4, waypoint.HorizontalPosition);
+            Assert.Equal(-10, waypoint.VerticalPosition);
 
-            Assert.Equal(waypoint.HorizontalPosition, 4);
-            Assert.Equal(waypoint.VerticalPosition, -10);
-        }
+            ship = FerryMover.MoveToWaypoint(waypoint, ship, 11);
 
-        [Fact]
-        public void WaypointRotateLeft90From90()
-        {
-            ManhattanLocation waypoint = new(10, 4);
-
-            waypoint = FerryMover.RotateWaypoint(waypoint, Directive.ROTATE_LEFT, 90);
-
-            Assert.Equal(waypoint.HorizontalPosition, -4);
-            Assert.Equal(waypoint.VerticalPosition, 10);
+            Assert.Equal(214, ship.HorizontalPosition);
+            Assert.Equal(-72, ship.VerticalPosition);
         }
     }
 }
