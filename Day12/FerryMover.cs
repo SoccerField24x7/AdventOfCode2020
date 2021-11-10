@@ -125,7 +125,7 @@ namespace Advent2020.Day12
             return endingShipPosition;
         }
 
-        public static ManhattanLocation RotateWaypoint( ManhattanLocation waypointLocation, char direction, int amount)
+        public static ManhattanLocation RotateWaypoint( ManhattanLocation waypointLocation, char rotateDirection, int amount)
         {
             if (amount != 360 && amount != 270 && amount != 180 && amount != 90 && amount != 0)
             {
@@ -139,7 +139,7 @@ namespace Advent2020.Day12
                 case 90:
                     endingPosition.VerticalPosition = waypointLocation.HorizontalPosition * -1;
                     endingPosition.HorizontalPosition = waypointLocation.VerticalPosition;
-                    if (direction == Directive.ROTATE_LEFT)
+                    if (rotateDirection == Directive.ROTATE_LEFT)
                     {
                         endingPosition.VerticalPosition = endingPosition.VerticalPosition * -1; // undo
                         endingPosition.HorizontalPosition = endingPosition.HorizontalPosition * -1;
@@ -147,9 +147,18 @@ namespace Advent2020.Day12
                     break;
 
                 case 180:
+                    endingPosition.VerticalPosition = waypointLocation.HorizontalPosition * -1;
+                    endingPosition.HorizontalPosition = waypointLocation.VerticalPosition * -1;
                     break;
 
                 case 270:
+                    endingPosition.VerticalPosition = waypointLocation.HorizontalPosition;
+                    endingPosition.HorizontalPosition = waypointLocation.VerticalPosition * -1;
+                    if (rotateDirection == Directive.ROTATE_LEFT)
+                    {
+                        endingPosition.VerticalPosition = endingPosition.VerticalPosition * -1; 
+                        endingPosition.HorizontalPosition = endingPosition.HorizontalPosition * -1; // undo
+                    }
                     break;
 
                 case 360:
